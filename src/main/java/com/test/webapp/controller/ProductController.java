@@ -1,7 +1,8 @@
 package com.test.webapp.controller;
 
-import com.test.webapp.model.User;
-import com.test.webapp.service.UserService;
+
+import com.test.webapp.model.Product;
+import com.test.webapp.service.ProductService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -12,15 +13,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-
 @RestController
-@RequestMapping("api/v1/")
-@Api(value="MainController", description="Main Controller Api document")
-public class MainController {
-
+@RequestMapping("api/")
+@Api(value="ProductController", description="ProductController Api document")
+public class ProductController {
     @Autowired
-    UserService userService;
-
+    ProductService productService;
 
     @ApiOperation(value = "View a list of available products",response = Iterable.class)
     @ApiResponses(value = {
@@ -30,16 +28,16 @@ public class MainController {
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     }
     )
-    @GetMapping("/{id}")
-    public Optional<User> getInformationById(@PathVariable("id") Integer id){
+    @GetMapping("product_id/{id}")
+    public Optional<Product> getProductById(@PathVariable("id") Integer id){
 
-        return userService.getUserInformationById(id);
+        return productService.getProductById(id);
     }
 
-    @PostMapping("/save")
-    public User saveInformation(@RequestBody User teacherInformation){
+    @PostMapping("/save_product")
+    public Product saveProduct(@RequestBody Product teacherInformation){
 
-        return userService.saveUserInformation(teacherInformation);
+        return productService.saveProduct(teacherInformation);
     }
 
     @ApiOperation(value = "View a list of all products",response = Iterable.class)
@@ -50,10 +48,9 @@ public class MainController {
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     }
     )
-    @GetMapping("/all")
-    public List<User> getInformationAll(){
+    @GetMapping("/all_Product")
+    public List<Product> getProductAll(){
 
-        return userService.getUserAll();
+        return productService.getProductAll();
     }
-
 }

@@ -20,7 +20,7 @@ class MainControllerTest {
     void getInformationAll() throws Exception{
 
        int listSize= userService.getUserAll().size();
-        assertEquals(4, listSize);
+        assertEquals(5, listSize);
 
     }
 
