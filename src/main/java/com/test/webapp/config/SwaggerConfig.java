@@ -29,7 +29,6 @@ public class SwaggerConfig{
         return new ApiInfoBuilder().title("Java API")
                 .description("Java API reference for developers")
                 .termsOfServiceUrl("http://javainuse.com")
-                .contact("alhajcse09@gmail.com").license("JavaInUse License")
                 .licenseUrl("alhajcse09@gmail.com").version("1.0").build();
     }
 
